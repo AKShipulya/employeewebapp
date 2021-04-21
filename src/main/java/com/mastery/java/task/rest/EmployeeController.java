@@ -20,6 +20,7 @@ public class EmployeeController {
     @GetMapping("")
     public List<Employee> getAllEmployees(){
         return employeeService.getAllEmployees();
+
     }
 
     @GetMapping("/{id}")
@@ -32,8 +33,8 @@ public class EmployeeController {
         employeeService.saveEmployee(employee);
     }
 
-    @GetMapping("/updateEmployee")
-    public void updateEmployee(Employee employee, Long id){
+    @GetMapping("/updateEmployee/{id}")
+    public void updateEmployee(Employee employee,@PathVariable Long id){
         employeeService.updateEmployee(employee, id);
     }
 
