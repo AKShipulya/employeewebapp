@@ -28,12 +28,12 @@ public class EmployeeDao {
     }
 
     public void saveEmployee(Employee employee){
-        jdbcTemplate.update("INSERT INTO Employee VALUES(?,?,?,?,?,?)",
+        jdbcTemplate.update("INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth) VALUES(?,?,?,?,?,?)",
                 employee.getFirstName(),
                 employee.getLastName(),
                 employee.getDepartmentId(),
                 employee.getJobTile(),
-                employee.getGender(),
+                employee.getGender().toString(),
                 employee.getDateOfBirth()
         );
     }
@@ -44,7 +44,7 @@ public class EmployeeDao {
                 employee.getLastName(),
                 employee.getDepartmentId(),
                 employee.getJobTile(),
-                employee.getGender(),
+                employee.getGender().toString(),
                 employee.getDateOfBirth(), id
         );
     }

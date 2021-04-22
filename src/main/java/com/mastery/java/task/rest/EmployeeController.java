@@ -3,6 +3,7 @@ package com.mastery.java.task.rest;
 import com.mastery.java.task.dto.Employee;
 import com.mastery.java.task.service.EmployeeService;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class EmployeeController {
     }
 
     @GetMapping("")
+    @ResponseBody
     public List<Employee> getAllEmployees(){
         return employeeService.getAllEmployees();
 
@@ -28,17 +30,18 @@ public class EmployeeController {
         return employeeService.getEmployeeById(id);
     }
 
-    @GetMapping("/createEmployee")
-    public void saveEmployee(Employee employee){
+    @PostMapping("/createEmployee")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void saveEmployee(@RequestBody Employee employee){
         employeeService.saveEmployee(employee);
     }
 
-    @GetMapping("/updateEmployee/{id}")
-    public void updateEmployee(Employee employee,@PathVariable Long id){
+    @PutMapping("/updateEmployee/{id}")
+    public void updateEmployee(@RequestBody Employee employee,@PathVariable Long id){
         employeeService.updateEmployee(employee, id);
     }
 
-    @GetMapping("/deleteEmployee/{id}")
+    @DeleteMapping("/deleteEmployee/{id}")
     public void deleteEmployee(@PathVariable Long id){
         employeeService.deleteEmployee(id);
     }
