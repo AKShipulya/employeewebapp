@@ -5,6 +5,7 @@ import java.util.Objects;
 
 
 public class Employee {
+
     private Long employeeId;
     private String firstName;
     private String lastName;
@@ -33,7 +34,6 @@ public class Employee {
     }
 
     public Employee(){
-
     }
 
     public Long getEmployeeId() {

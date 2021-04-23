@@ -1,6 +1,5 @@
 package com.mastery.java.task.entity;
 
-import com.mastery.java.task.dto.Employee;
 import com.mastery.java.task.dto.Gender;
 
 import java.util.Date;

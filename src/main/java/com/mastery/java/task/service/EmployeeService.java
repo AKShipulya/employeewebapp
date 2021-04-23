@@ -2,13 +2,12 @@ package com.mastery.java.task.service;
 
 import com.mastery.java.task.dao.EmployeeDao;
 import com.mastery.java.task.dto.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class EmployeeService {
+public class EmployeeService implements com.mastery.java.task.service.Service {
 
     private final EmployeeDao employeeDao;
 
@@ -16,24 +15,24 @@ public class EmployeeService {
         this.employeeDao = employeeDao;
     }
 
-    public List<Employee> getAllEmployees(){
-        return employeeDao.getAllEmployees();
+    public List<Employee> getAll(){
+        return employeeDao.getAll();
     }
 
-    public Employee getEmployeeById(Long id){
-        return employeeDao.getEmployeeById(id);
+    public Employee getById(Long id){
+        return employeeDao.getById(id);
     }
 
-    public void saveEmployee(Employee employee){
-        employeeDao.saveEmployee(employee);
+    public void create(Employee employee){
+        employeeDao.create(employee);
     }
 
-    public void updateEmployee(Employee employee, Long id){
-        employeeDao.updateEmployee(employee, id);
+    public void update(Employee employee){
+        employeeDao.update(employee);
     }
 
-    public void deleteEmployee(Long id){
-        employeeDao.deleteEmployee(id);
+    public void delete(Long id){
+        employeeDao.delete(id);
     }
 
 }

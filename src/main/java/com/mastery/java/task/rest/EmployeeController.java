@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
-public class EmployeeController {
+public class EmployeeController implements Controller{
 
     private final EmployeeService employeeService;
 
@@ -18,32 +18,32 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping("")
+    @GetMapping()
     @ResponseBody
-    public List<Employee> getAllEmployees(){
-        return employeeService.getAllEmployees();
+    public List<Employee> getAll(){
+        return employeeService.getAll();
 
     }
 
     @GetMapping("/{id}")
-    public Employee getEmployeeByID(@PathVariable Long id){
-        return employeeService.getEmployeeById(id);
+    public Employee getByID(@PathVariable Long id){
+        return employeeService.getById(id);
     }
 
-    @PostMapping("/createEmployee")
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveEmployee(@RequestBody Employee employee){
-        employeeService.saveEmployee(employee);
+    public void create(@RequestBody Employee employee){
+        employeeService.create(employee);
     }
 
-    @PutMapping("/updateEmployee/{id}")
-    public void updateEmployee(@RequestBody Employee employee,@PathVariable Long id){
-        employeeService.updateEmployee(employee, id);
+    @PutMapping()
+    public void update(@RequestBody Employee employee){
+        employeeService.update(employee);
     }
 
-    @DeleteMapping("/deleteEmployee/{id}")
-    public void deleteEmployee(@PathVariable Long id){
-        employeeService.deleteEmployee(id);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        employeeService.delete(id);
     }
 
 
