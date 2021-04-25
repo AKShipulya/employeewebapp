@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EmployeeService implements com.mastery.java.task.service.Service {
+public class EmployeeService implements ServiceInterface {
 
     private final EmployeeDao employeeDao;
 
@@ -15,23 +15,23 @@ public class EmployeeService implements com.mastery.java.task.service.Service {
         this.employeeDao = employeeDao;
     }
 
-    public List<Employee> getAll(){
+    public List<Employee> getAll() {
         return employeeDao.getAll();
     }
 
-    public Employee getById(Long id){
+    public Employee getById(Long id) {
         return employeeDao.getById(id);
     }
 
-    public void create(Employee employee){
+    public void create(Employee employee) {
         employeeDao.create(employee);
     }
 
-    public void update(Employee employee){
+    public void update(Employee employee) {
         employeeDao.update(employee);
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         employeeDao.delete(id);
     }
 

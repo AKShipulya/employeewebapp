@@ -1,0 +1,2 @@
+INSERT INTO employee VALUES (1, 'Ivan', 'Ivanov', 2, 'Developer', 'MALE', '1990-10-19');
+INSERT INTO employee VALUES (2, 'Segey', 'Sergeev', 2, 'QA', 'MALE', '1988-03-02');

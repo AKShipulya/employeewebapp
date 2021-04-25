@@ -33,7 +33,7 @@ public class Employee {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Employee(){
+    public Employee() {
     }
 
     public Long getEmployeeId() {

@@ -1,4 +1,4 @@
-package com.mastery.java.task.mapper;
+package com.mastery.java.task.dao.mapper;
 
 import com.mastery.java.task.dto.Employee;
 import com.mastery.java.task.dto.Gender;

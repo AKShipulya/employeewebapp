@@ -1,16 +1,15 @@
 package com.mastery.java.task.dao;
 
 import com.mastery.java.task.dto.Employee;
-import com.mastery.java.task.mapper.EmployeeMapper;
+import com.mastery.java.task.dao.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class EmployeeDao implements Dao{
+public class EmployeeDao implements Dao {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -19,16 +18,16 @@ public class EmployeeDao implements Dao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Employee> getAll(){
+    public List<Employee> getAll() {
         return jdbcTemplate.query("SELECT * FROM employee", new EmployeeMapper());
     }
 
-    public Employee getById(Long id){
+    public Employee getById(Long id) {
         return jdbcTemplate.query("SELECT * FROM employee WHERE employee_id=?", new EmployeeMapper(), id)
                 .stream().findAny().orElse(null);
     }
 
-    public void create(Employee employee){
+    public void create(Employee employee) {
         jdbcTemplate.update("INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth) VALUES(?,?,?,?,?,?)",
                 employee.getFirstName(),
                 employee.getLastName(),
@@ -39,7 +38,7 @@ public class EmployeeDao implements Dao{
         );
     }
 
-    public void update(Employee employee){
+    public void update(Employee employee) {
         jdbcTemplate.update("UPDATE employee SET first_name=?, last_name=?, department_id=?, job_title=?, gender=?, date_of_birth=? WHERE employee_id=?",
                 employee.getFirstName(),
                 employee.getLastName(),
@@ -51,7 +50,7 @@ public class EmployeeDao implements Dao{
         );
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         jdbcTemplate.update("DELETE FROM employee WHERE employee_id=?", id);
     }
 

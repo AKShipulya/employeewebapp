@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
-public class EmployeeController implements Controller{
+public class EmployeeController implements Controller<Employee> {
 
     private final EmployeeService employeeService;
 
@@ -20,29 +20,29 @@ public class EmployeeController implements Controller{
 
     @GetMapping()
     @ResponseBody
-    public List<Employee> getAll(){
+    public List<Employee> getAll() {
         return employeeService.getAll();
 
     }
 
     @GetMapping("/{id}")
-    public Employee getByID(@PathVariable Long id){
+    public Employee getByID(@PathVariable Long id) {
         return employeeService.getById(id);
     }
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody Employee employee){
+    public void create(@RequestBody Employee employee) {
         employeeService.create(employee);
     }
 
     @PutMapping()
-    public void update(@RequestBody Employee employee){
+    public void update(@RequestBody Employee employee) {
         employeeService.update(employee);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public void delete(@PathVariable Long id) {
         employeeService.delete(id);
     }
 
