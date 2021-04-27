@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class EmployeeDao implements Dao {
+public class EmployeeDao implements Dao<Employee> {
 
     private final JdbcTemplate jdbcTemplate;
 

@@ -18,7 +18,7 @@ public class EmployeeController implements Controller<Employee> {
         this.employeeService = employeeService;
     }
 
-    @GetMapping()
+    @GetMapping
     @ResponseBody
     public List<Employee> getAll() {
         return employeeService.getAll();
@@ -30,13 +30,13 @@ public class EmployeeController implements Controller<Employee> {
         return employeeService.getById(id);
     }
 
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody Employee employee) {
         employeeService.create(employee);
     }
 
-    @PutMapping()
+    @PutMapping
     public void update(@RequestBody Employee employee) {
         employeeService.update(employee);
     }

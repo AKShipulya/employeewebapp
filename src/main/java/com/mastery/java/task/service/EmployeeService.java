@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EmployeeService implements ServiceInterface {
+public class EmployeeService implements ServiceInterface<Employee> {
 
     private final EmployeeDao employeeDao;
 
