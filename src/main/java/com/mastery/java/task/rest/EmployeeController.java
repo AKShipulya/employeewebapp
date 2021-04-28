@@ -1,8 +1,8 @@
 package com.mastery.java.task.rest;
 
 import com.mastery.java.task.dto.Employee;
-import com.mastery.java.task.service.EmployeeService;
 
+import com.mastery.java.task.service.GenericService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,11 +10,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
-public class EmployeeController implements Controller<Employee> {
+public class EmployeeController implements GenericController<Employee> {
 
-    private final EmployeeService employeeService;
+    private final GenericService<Employee> employeeService;
 
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(GenericService<Employee> employeeService) {
         this.employeeService = employeeService;
     }
 
@@ -26,7 +26,7 @@ public class EmployeeController implements Controller<Employee> {
     }
 
     @GetMapping("/{id}")
-    public Employee getByID(@PathVariable Long id) {
+    public Employee getById(@PathVariable Long id) {
         return employeeService.getById(id);
     }
 

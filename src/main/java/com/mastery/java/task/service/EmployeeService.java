@@ -1,17 +1,17 @@
 package com.mastery.java.task.service;
 
-import com.mastery.java.task.dao.EmployeeDao;
+import com.mastery.java.task.dao.GenericDao;
 import com.mastery.java.task.dto.Employee;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class EmployeeService implements ServiceInterface<Employee> {
+public class EmployeeService implements GenericService<Employee> {
 
-    private final EmployeeDao employeeDao;
+    private final GenericDao<Employee> employeeDao;
 
-    public EmployeeService(EmployeeDao employeeDao) {
+    public EmployeeService(GenericDao<Employee> employeeDao) {
         this.employeeDao = employeeDao;
     }
 

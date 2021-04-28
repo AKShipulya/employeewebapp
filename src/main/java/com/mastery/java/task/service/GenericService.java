@@ -1,10 +1,10 @@
-package com.mastery.java.task.dao;
+package com.mastery.java.task.service;
 
 import com.mastery.java.task.dto.Employee;
 
 import java.util.List;
 
-public interface Dao<T> {
+public interface GenericService<T> {
 
     List<T> getAll();
 

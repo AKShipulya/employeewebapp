@@ -1,10 +1,10 @@
-package com.mastery.java.task.service;
+package com.mastery.java.task.rest;
 
 import com.mastery.java.task.dto.Employee;
 
 import java.util.List;
 
-public interface ServiceInterface<T> {
+public interface GenericController<T> {
 
     List<T> getAll();
 
