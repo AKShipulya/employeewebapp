@@ -12,19 +12,20 @@ import java.util.List;
 public class EmployeeDao implements GenericDao<Employee> {
 
     private final JdbcTemplate jdbcTemplate;
+    private final EmployeeMapper employeeMapper;
 
     @Autowired
-    public EmployeeDao(JdbcTemplate jdbcTemplate) {
+    public EmployeeDao(JdbcTemplate jdbcTemplate, EmployeeMapper employeeMapper) {
         this.jdbcTemplate = jdbcTemplate;
+        this.employeeMapper = employeeMapper;
     }
 
     public List<Employee> getAll() {
-        return jdbcTemplate.query("SELECT * FROM employee", new EmployeeMapper());
+        return jdbcTemplate.query("SELECT * FROM employee", employeeMapper);
     }
 
     public Employee getById(Long id) {
-        return jdbcTemplate.query("SELECT * FROM employee WHERE employee_id=?", new EmployeeMapper(), id)
-                .stream().findAny().orElse(null);
+        return jdbcTemplate.queryForObject("SELECT * FROM employee WHERE employee_id=?", employeeMapper, id);
     }
 
     public void create(Employee employee) {
