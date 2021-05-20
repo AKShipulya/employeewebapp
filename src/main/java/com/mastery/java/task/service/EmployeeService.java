@@ -1,10 +1,15 @@
 package com.mastery.java.task.service;
 
+import com.mastery.java.task.dao.EmployeeDao;
 import com.mastery.java.task.dao.GenericDao;
+import com.mastery.java.task.dao.mapper.EmployeeMapper;
 import com.mastery.java.task.dto.Employee;
+import com.mastery.java.task.exception.EmployeeNotFoundException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService implements GenericService<Employee> {
@@ -19,8 +24,11 @@ public class EmployeeService implements GenericService<Employee> {
         return employeeDao.getAll();
     }
 
-    public Employee getById(Long id) {
-        return employeeDao.getById(id);
+    public Optional<Employee> getById(Long id) {
+        if(employeeDao.getById(id).isPresent()){
+            return employeeDao.getById(id);
+        }
+        throw new EmployeeNotFoundException("Employee not found");
     }
 
     public void create(Employee employee) {
@@ -32,6 +40,9 @@ public class EmployeeService implements GenericService<Employee> {
     }
 
     public void delete(Long id) {
+        if (employeeDao.delete(id) == 0){
+            throw new EmployeeNotFoundException("Employee not found");
+        }else
         employeeDao.delete(id);
     }
 

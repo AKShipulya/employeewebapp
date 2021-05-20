@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/employee")
@@ -19,14 +20,12 @@ public class EmployeeController implements GenericController<Employee> {
     }
 
     @GetMapping
-    @ResponseBody
     public List<Employee> getAll() {
         return employeeService.getAll();
-
     }
 
     @GetMapping("/{id}")
-    public Employee getById(@PathVariable Long id) {
+    public Optional<Employee> getById(@PathVariable Long id) {
         return employeeService.getById(id);
     }
 

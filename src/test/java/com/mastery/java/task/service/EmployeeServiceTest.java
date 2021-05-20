@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
@@ -20,7 +21,7 @@ import static org.mockito.Mockito.*;
 public class EmployeeServiceTest {
 
     private final Date DATE = new Date();
-    private final Employee EMPLOYEE = new Employee("Test", "Employee", 1L, "TestTitle", Gender.MALE, DATE);
+    private final Employee EMPLOYEE = new Employee(1L, "Test", "Employee", 1L, "TestTitle", Gender.MALE, DATE);
 
     @InjectMocks
     private EmployeeService employeeService;
@@ -46,9 +47,9 @@ public class EmployeeServiceTest {
 
     @Test
     public void getEmployeeById_success() {
-        when(employeeDao.getById(EMPLOYEE.getEmployeeId())).thenReturn(EMPLOYEE);
-        Employee employee = employeeService.getById(EMPLOYEE.getEmployeeId());
-        Assert.assertEquals(EMPLOYEE, employee);
+        when(employeeDao.getById(EMPLOYEE.getEmployeeId())).thenReturn(Optional.of(EMPLOYEE));
+        Optional<Employee> employee = employeeService.getById(EMPLOYEE.getEmployeeId());
+        Assert.assertEquals(Optional.of(EMPLOYEE), employee);
     }
 
     @Test

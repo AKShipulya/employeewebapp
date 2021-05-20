@@ -58,7 +58,7 @@ public class EmployeeDaoTest {
     @Test
     void getEmployeeById_success() {
         when(jdbcTemplate.queryForObject("SELECT * FROM employee WHERE employee_id=?", employeeMapper, EMPLOYEE.getEmployeeId())).thenReturn(EMPLOYEE);
-        Employee employeeFromDao = employeeDao.getById(EMPLOYEE.getEmployeeId());
+        Optional<Employee> employeeFromDao = employeeDao.getById(EMPLOYEE.getEmployeeId());
         Assert.assertEquals(EMPLOYEE, employeeFromDao);
     }
 
