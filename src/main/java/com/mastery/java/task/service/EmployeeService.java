@@ -21,6 +21,9 @@ public class EmployeeService implements GenericService<Employee> {
     }
 
     public List<Employee> getAll() {
+        if (employeeDao.getAll().isEmpty()) {
+            throw new EmployeeNotFoundException("Employees list is empty");
+        }
         return employeeDao.getAll();
     }
 
@@ -28,20 +31,24 @@ public class EmployeeService implements GenericService<Employee> {
         if (employeeDao.getById(id).isPresent()) {
             return employeeDao.getById(id);
         }
-        throw new EmployeeNotFoundException("Employee not found");
+        throw new EmployeeNotFoundException("Employee with id " + id + " not found");
     }
 
     public void create(Employee employee) {
-        employeeDao.create(employee);
+        if (employeeDao.create(employee) == 0) {
+            throw new EmployeeNotFoundException("Employee not created");
+        }
     }
 
     public void update(Employee employee, Long id) {
-        employeeDao.update(employee, id);
+        if (employeeDao.update(employee, id) == 0) {
+            throw new EmployeeNotFoundException("Employee with id " + id + " not found");
+        }
     }
 
     public void delete(Long id) {
         if (employeeDao.delete(id) == 0) {
-            throw new EmployeeNotFoundException("Employee not found");
+            throw new EmployeeNotFoundException("Employee with id " + id + " not found");
         }
     }
 
