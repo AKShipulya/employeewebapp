@@ -60,6 +60,7 @@ public class EmployeeServiceTest {
 
     @Test
     public void deleteEmployee_success() {
+        when(employeeDao.delete(EMPLOYEE.getEmployeeId())).thenReturn(1);
         employeeService.delete(EMPLOYEE.getEmployeeId());
         verify(employeeDao, times(1)).delete(EMPLOYEE.getEmployeeId());
     }

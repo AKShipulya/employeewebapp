@@ -43,7 +43,6 @@ public class EmployeeService implements GenericService<Employee> {
         if (employeeDao.delete(id) == 0) {
             throw new EmployeeNotFoundException("Employee not found");
         }
-        employeeDao.delete(id);
     }
 
 }
