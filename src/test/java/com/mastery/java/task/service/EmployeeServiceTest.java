@@ -54,8 +54,8 @@ public class EmployeeServiceTest {
 
     @Test
     public void updateEmployee_success() {
-        employeeService.update(EMPLOYEE);
-        verify(employeeDao, times(1)).update(EMPLOYEE);
+        employeeService.update(EMPLOYEE, EMPLOYEE.getEmployeeId());
+        verify(employeeDao, times(1)).update(EMPLOYEE, EMPLOYEE.getEmployeeId());
     }
 
     @Test

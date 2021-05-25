@@ -13,7 +13,7 @@ public interface GenericDao<T> {
 
     void create(Employee employee);
 
-    void update(Employee employee);
+    void update(Employee employee, Long id);
 
     int delete(Long id);
 

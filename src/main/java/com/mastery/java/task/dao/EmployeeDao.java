@@ -29,7 +29,7 @@ public class EmployeeDao implements GenericDao<Employee> {
     public Optional<Employee> getById(Long id) {
         try {
             return Optional.ofNullable(jdbcTemplate.queryForObject("SELECT * FROM employee WHERE employee_id=?", employeeMapper, id));
-        }catch (EmptyResultDataAccessException e){
+        } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }
     }
@@ -45,15 +45,14 @@ public class EmployeeDao implements GenericDao<Employee> {
         );
     }
 
-    public void update(Employee employee) {
+    public void update(Employee employee, Long id) {
         jdbcTemplate.update("UPDATE employee SET first_name=?, last_name=?, department_id=?, job_title=?, gender=?, date_of_birth=? WHERE employee_id=?",
                 employee.getFirstName(),
                 employee.getLastName(),
                 employee.getDepartmentId(),
                 employee.getJobTile(),
                 employee.getGender().toString(),
-                employee.getDateOfBirth(),
-                employee.getEmployeeId()
+                employee.getDateOfBirth()
         );
     }
 

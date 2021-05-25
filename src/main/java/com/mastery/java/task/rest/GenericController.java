@@ -13,7 +13,7 @@ public interface GenericController<T> {
 
     void create(Employee employee);
 
-    void update(Employee employee);
+    void update(Employee employee, Long id);
 
     void delete(Long id);
 

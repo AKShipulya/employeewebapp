@@ -25,7 +25,7 @@ public class EmployeeService implements GenericService<Employee> {
     }
 
     public Optional<Employee> getById(Long id) {
-        if(employeeDao.getById(id).isPresent()){
+        if (employeeDao.getById(id).isPresent()) {
             return employeeDao.getById(id);
         }
         throw new EmployeeNotFoundException("Employee not found");
@@ -35,14 +35,14 @@ public class EmployeeService implements GenericService<Employee> {
         employeeDao.create(employee);
     }
 
-    public void update(Employee employee) {
-        employeeDao.update(employee);
+    public void update(Employee employee, Long id) {
+        employeeDao.update(employee, id);
     }
 
     public void delete(Long id) {
-        if (employeeDao.delete(id) == 0){
+        if (employeeDao.delete(id) == 0) {
             throw new EmployeeNotFoundException("Employee not found");
-        }else
+        }
         employeeDao.delete(id);
     }
 

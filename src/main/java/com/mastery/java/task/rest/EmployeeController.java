@@ -35,9 +35,9 @@ public class EmployeeController implements GenericController<Employee> {
         employeeService.create(employee);
     }
 
-    @PutMapping
-    public void update(@RequestBody Employee employee) {
-        employeeService.update(employee);
+    @PutMapping("{/id}")
+    public void update(@RequestBody Employee employee, @PathVariable Long id) {
+        employeeService.update(employee, id);
     }
 
     @DeleteMapping("/{id}")

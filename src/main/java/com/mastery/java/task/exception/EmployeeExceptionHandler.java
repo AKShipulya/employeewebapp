@@ -15,7 +15,7 @@ public class EmployeeExceptionHandler extends ResponseEntityExceptionHandler {
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(value = EmployeeNotFoundException.class)
-    public ErrorResponse handleEmployeeNotFoundException(HttpServletRequest request, EmployeeNotFoundException exception){
+    public ErrorResponse handleEmployeeNotFoundException(HttpServletRequest request, EmployeeNotFoundException exception) {
         return new ErrorResponse(request.getMethod(), request.getRequestURI(), exception.getMessage());
     }
 }

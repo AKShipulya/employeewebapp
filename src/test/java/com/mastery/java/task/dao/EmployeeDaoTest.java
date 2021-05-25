@@ -64,7 +64,7 @@ public class EmployeeDaoTest {
 
     @Test
     void updateEmployee_success() {
-        employeeDao.update(EMPLOYEE);
+        employeeDao.update(EMPLOYEE, EMPLOYEE.getEmployeeId());
 
         verify(jdbcTemplate, times(1)).update(
                 "UPDATE employee SET first_name=?, last_name=?, department_id=?, job_title=?, gender=?, date_of_birth=? WHERE employee_id=?",
@@ -73,8 +73,7 @@ public class EmployeeDaoTest {
                 EMPLOYEE.getDepartmentId(),
                 EMPLOYEE.getJobTile(),
                 EMPLOYEE.getGender().toString(),
-                EMPLOYEE.getDateOfBirth(),
-                EMPLOYEE.getEmployeeId()
+                EMPLOYEE.getDateOfBirth()
         );
     }
 
