@@ -73,7 +73,8 @@ public class EmployeeDaoTest {
                 EMPLOYEE.getDepartmentId(),
                 EMPLOYEE.getJobTile(),
                 EMPLOYEE.getGender().toString(),
-                EMPLOYEE.getDateOfBirth()
+                EMPLOYEE.getDateOfBirth(),
+                EMPLOYEE.getEmployeeId()
         );
     }
 
