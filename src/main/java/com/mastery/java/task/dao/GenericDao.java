@@ -11,9 +11,9 @@ public interface GenericDao<T> {
 
     Optional<T> getById(Long id);
 
-    int create(Employee employee);
+    void create(Employee employee);
 
-    int update(Employee employee, Long id);
+    int update(Employee employee);
 
     int delete(Long id);
 

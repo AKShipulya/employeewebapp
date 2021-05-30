@@ -13,7 +13,7 @@ public interface GenericService<T> {
 
     void create(Employee employee);
 
-    void update(Employee employee, Long id);
+    void update(Employee employee);
 
     void delete(Long id);
 

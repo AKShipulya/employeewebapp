@@ -1,11 +1,8 @@
 package com.mastery.java.task.service;
 
-import com.mastery.java.task.dao.EmployeeDao;
 import com.mastery.java.task.dao.GenericDao;
-import com.mastery.java.task.dao.mapper.EmployeeMapper;
 import com.mastery.java.task.dto.Employee;
 import com.mastery.java.task.exception.EmployeeNotFoundException;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,9 +18,6 @@ public class EmployeeService implements GenericService<Employee> {
     }
 
     public List<Employee> getAll() {
-        if (employeeDao.getAll().isEmpty()) {
-            throw new EmployeeNotFoundException("Employees list is empty");
-        }
         return employeeDao.getAll();
     }
 
@@ -35,14 +29,12 @@ public class EmployeeService implements GenericService<Employee> {
     }
 
     public void create(Employee employee) {
-        if (employeeDao.create(employee) == 0) {
-            throw new EmployeeNotFoundException("Employee not created");
-        }
+        employeeDao.create(employee);
     }
 
-    public void update(Employee employee, Long id) {
-        if (employeeDao.update(employee, id) == 0) {
-            throw new EmployeeNotFoundException("Employee with id " + id + " not found");
+    public void update(Employee employee) {
+        if (employeeDao.update(employee) == 0) {
+            throw new EmployeeNotFoundException("Employee not found");
         }
     }
 

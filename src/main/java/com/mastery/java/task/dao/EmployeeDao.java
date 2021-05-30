@@ -34,22 +34,18 @@ public class EmployeeDao implements GenericDao<Employee> {
         }
     }
 
-    public int create(Employee employee) {
-        try {
-            return jdbcTemplate.update("INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth) VALUES(?,?,?,?,?,?)",
-                    employee.getFirstName(),
-                    employee.getLastName(),
-                    employee.getDepartmentId(),
-                    employee.getJobTile(),
-                    employee.getGender().toString(),
-                    employee.getDateOfBirth()
-            );
-        }catch (NullPointerException e) {
-            return 0;
-        }
+    public void create(Employee employee) {
+        jdbcTemplate.update("INSERT INTO employee (first_name, last_name, department_id, job_title, gender, date_of_birth) VALUES(?,?,?,?,?,?)",
+                employee.getFirstName(),
+                employee.getLastName(),
+                employee.getDepartmentId(),
+                employee.getJobTile(),
+                employee.getGender().toString(),
+                employee.getDateOfBirth()
+        );
     }
 
-    public int update(Employee employee, Long id) {
+    public int update(Employee employee) {
         return jdbcTemplate.update("UPDATE employee SET first_name=?, last_name=?, department_id=?, job_title=?, gender=?, date_of_birth=? WHERE employee_id=?",
                 employee.getFirstName(),
                 employee.getLastName(),
@@ -57,7 +53,7 @@ public class EmployeeDao implements GenericDao<Employee> {
                 employee.getJobTile(),
                 employee.getGender().toString(),
                 employee.getDateOfBirth(),
-                id
+                employee.getEmployeeId()
         );
     }
 

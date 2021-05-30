@@ -31,7 +31,6 @@ public class EmployeeServiceTest {
 
     @Test
     public void createEmployee_success() {
-        when(employeeDao.create(EMPLOYEE)).thenReturn(1);
         employeeService.create(EMPLOYEE);
         verify(employeeDao, times(1)).create(EMPLOYEE);
         Assert.assertEquals("Test", EMPLOYEE.getFirstName());
@@ -42,7 +41,7 @@ public class EmployeeServiceTest {
         List<Employee> employeesFromDao = Arrays.asList(EMPLOYEE);
         when(employeeDao.getAll()).thenReturn(employeesFromDao);
         List<Employee> employeeList = employeeService.getAll();
-        verify(employeeDao, times(2)).getAll();
+        verify(employeeDao, times(1)).getAll();
         Assert.assertEquals(employeesFromDao, employeeList);
     }
 
@@ -55,9 +54,9 @@ public class EmployeeServiceTest {
 
     @Test
     public void updateEmployee_success() {
-        when(employeeDao.update(EMPLOYEE, EMPLOYEE.getEmployeeId())).thenReturn(1);
-        employeeService.update(EMPLOYEE, EMPLOYEE.getEmployeeId());
-        verify(employeeDao, times(1)).update(EMPLOYEE, EMPLOYEE.getEmployeeId());
+        when(employeeDao.update(EMPLOYEE)).thenReturn(1);
+        employeeService.update(EMPLOYEE);
+        verify(employeeDao, times(1)).update(EMPLOYEE);
     }
 
     @Test
