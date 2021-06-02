@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/employees")
 public class EmployeeController implements GenericController<Employee> {
 
     private final GenericService<Employee> employeeService;
@@ -37,6 +37,7 @@ public class EmployeeController implements GenericController<Employee> {
 
     @PutMapping("/{id}")
     public void update(@RequestBody Employee employee, @PathVariable Long id) {
+        employee.setEmployeeId(id);
         employeeService.update(employee);
     }
 
