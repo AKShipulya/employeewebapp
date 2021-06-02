@@ -7,8 +7,8 @@ http://localhost:8080/simplewebapp/employee -use a GET request with this address
 
 http://localhost:8080/simplewebapp/employee/{id} - use a GET request with this address to get an employee by id
 
-http://localhost:8080/simplewebapp/employee/ -use a POST request with this address to creating of an employee. ID should be put in a JSON file
+http://localhost:8080/simplewebapp/employee/ -use a POST request with this address to creating of an employee.
 
-http://localhost:8080/simplewebapp/employee/{id} - use a PUT request with this address to updating of an employee by id. ID should be put in a JSON file
+http://localhost:8080/simplewebapp/employee/{id} - use a PUT request with this address to updating of an employee by id.
 
-http://localhost:8080/simplewebapp/employee/{id} -use a DELETE request with this address to deleting of an employee by id
+http://localhost:8080/simplewebapp/employee/{id} - use a DELETE request with this address to deleting of an employee by id
